@@ -9,8 +9,8 @@ namespace Hangman
 {
     class Program
     {
-        List<String> woerterListe = new List<String>();
-        List<String> buchstaben = new List<String>();
+        public List<String> woerterListe = new List<String>();
+        public List<String> buchstaben = new List<String>();
         static void Main(string[] args)
         {
             SelectList();
@@ -56,7 +56,15 @@ namespace Hangman
             while((line = reader.ReadLine()) != null){
                 woerterListe.Add(line);
             }
+
             Console.ReadLine();
         }
+
+        //Wort zufällig auswählen
+        public static void SelectWord(){
+            int laenge = woerterListe.Count();
+            int position = random.Next(laenge);
+}           string wort = woerterListe.ElementAt(position);
+            char [] buchstabenArray = wort.ToCharArray();
     }
 }

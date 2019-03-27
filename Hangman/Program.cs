@@ -10,7 +10,7 @@ namespace Hangman
     class Program
     {
         public List<String> woerterListe = new List<String>();
-        public List<String> buchstaben = new List<String>();
+        public List<char> buchstaben = new List<char>();
         static void Main(string[] args)
         {
             SelectList();
@@ -60,11 +60,25 @@ namespace Hangman
             Console.ReadLine();
         }
 
+        //Buchstabenliste füllen
+        public static void buchstabenListeFuellen(){
+        char[] alphabet = {'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'}
+        foreach(char buchstabe in alphabet)
+                {
+                buchstaben.Add(buchstabe);
+                }
+        }
+
+
         //Wort zufällig auswählen
         public static void SelectWord(){
+            buchstabenListeFuellen();
             int laenge = woerterListe.Count();
             int position = random.Next(laenge);
-}           string wort = woerterListe.ElementAt(position);
+            string wort = woerterListe.ElementAt(position);
             char [] buchstabenArray = wort.ToCharArray();
+            Console.WriteLine("wort");
+            Console.ReadLine();
+            }
     }
 }

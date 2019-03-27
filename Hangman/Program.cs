@@ -9,8 +9,8 @@ namespace Hangman
 {
     class Program
     {
-        public List<String> woerterListe = new List<String>();
-        public List<char> buchstaben = new List<char>();
+        public static List<String> woerterListe = new List<String>();
+        public static List<char> buchstaben = new List<char>();
         static void Main(string[] args)
         {
             SelectList();
@@ -20,8 +20,8 @@ namespace Hangman
         public static void SelectList()
         {
             Console.WriteLine("Bitte Spielliste wählen:");
-            Console.WriteLine("1. Pokemon");
-            Console.WriteLine("2. Städte");
+            Console.WriteLine("1. Städte");
+            Console.WriteLine("2. Pokemon");
 
             Boolean noInput = true;
 
@@ -56,13 +56,14 @@ namespace Hangman
             while((line = reader.ReadLine()) != null){
                 woerterListe.Add(line);
             }
+           // buchstabenListeFuellen();
+            SelectWord();
 
-            Console.ReadLine();
         }
 
         //Buchstabenliste füllen
-        public static void buchstabenListeFuellen(){
-        char[] alphabet = {'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'}
+        public static void BuchstabenListeFuellen(){
+            char[] alphabet = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
         foreach(char buchstabe in alphabet)
                 {
                 buchstaben.Add(buchstabe);
@@ -72,13 +73,16 @@ namespace Hangman
 
         //Wort zufällig auswählen
         public static void SelectWord(){
-            buchstabenListeFuellen();
+            BuchstabenListeFuellen();
             int laenge = woerterListe.Count();
-            int position = random.Next(laenge);
-            string wort = woerterListe.ElementAt(position);
+            Random rnd = new Random();
+            string wort = woerterListe.ElementAt(rnd.Next(laenge));
             char [] buchstabenArray = wort.ToCharArray();
-            Console.WriteLine("wort");
+            BuchstabenListeFuellen();
+            Console.WriteLine();
+            Console.WriteLine(wort);
             Console.ReadLine();
+            SelectList();
             }
     }
 }

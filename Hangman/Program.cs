@@ -13,16 +13,19 @@ namespace Hangman
         public static List<char> buchstaben = new List<char>();
         static void Main(string[] args)
         {
+            Program Hangman = new Program();
+
             SelectList();
         }
 
         //erst auswählen, welche Liste
-        public static void SelectList()
+        public string SelectList()
         {
             Console.WriteLine("Bitte Spielliste wählen:");
             Console.WriteLine("1. Städte");
             Console.WriteLine("2. Pokemon");
-
+            string pokemon = "Hangman_Wortliste_Pokemon.txt";
+            string staedte = "Hangman_Wortliste_Städte.txt";
             Boolean noInput = true;
 
             while (noInput)
@@ -32,13 +35,15 @@ namespace Hangman
 
                 if (cki.Key == ConsoleKey.D1)
                 {
-                    ReadFile("Hangman_Wortliste_Pokemon.txt");
-                    noInput = false;
+                    return pokemon;
+                    // ReadFile("Hangman_Wortliste_Pokemon.txt");
+                    //noInput = false;
                 }
                 else if (cki.Key == ConsoleKey.D2)
                 {
-                    ReadFile("Hangman_Wortliste_Städte.txt");
-                    noInput = false;
+                    return staedte;
+                    //ReadFile("Hangman_Wortliste_Städte.txt");
+                    //noInput = false;
                 }
                 else
                 {
@@ -82,6 +87,7 @@ namespace Hangman
             Console.WriteLine();
             Console.WriteLine(wort);
             Console.ReadLine();
+            TryLetter(wortArray);
             SelectList();
             }
 

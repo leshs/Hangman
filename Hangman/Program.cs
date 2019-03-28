@@ -21,20 +21,14 @@ namespace Hangman
         static void Main(string[] args)
         {
             Program Hangman = new Program();
-
-            Hangman.InitializeGalgen();
-           }
-
-        public void InitializeGalgen()
-        {
-            SetVersuche();
-            galgen = new ASCII(versuche);
-            StartGame();
+            Hangman.StartGame();
         }
 
         public void StartGame()
         {
+            galgen = new ASCII();
             SetVersuche();
+            galgen.SetVersuche(versuche);
             string file = SelectList();
             ReadFile(file);
             SelectWord();
@@ -77,7 +71,7 @@ namespace Hangman
             }
         }
 
-        //Liste lesen
+        //Einlesen des Files und schreiben in die (Wörter-)Liste
         public void ReadFile(string file)
         {
             string line;
@@ -120,6 +114,7 @@ namespace Hangman
             int wortLength = wortArray.Length;
             int success = wortLength;
             solutionArray = new char[wortLength];
+            //Füllen des "Solution-Array" mit Unterstrichen. Diese werden ggf. durch die korrekten Buchstaben ersetzt.
             for (int i = 0; i < wortLength; i++)
             {
                 solutionArray[i] = '_';
@@ -165,7 +160,6 @@ namespace Hangman
                     }
                     else
                     {   
-                        
                         galgen.DrawGalgen();
                         versuche--;
                     }
@@ -176,7 +170,6 @@ namespace Hangman
                     Console.WriteLine("Buchstabe bereits verwendet!");
                     continue;
                 }
-
             }
             Console.WriteLine("verloren!");
             Console.WriteLine("Lösung: ");

@@ -11,10 +11,8 @@ namespace Hangman
     {
         char[,] galgen = new char[9, 7];
         int versuche; 
-        public ASCII(int number)
-
+        public ASCII()
         {
-            versuche = number;
             for(int i = 0; i < 6; i++)
             {
                 for(int j = 0; j < 9; j++)
@@ -89,6 +87,11 @@ namespace Hangman
                 }
                 Console.WriteLine();
             }
+        }
+
+        public void SetVersuche(int nummer) 
+        {
+            versuche = nummer;
         }
     }
 }

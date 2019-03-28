@@ -77,12 +77,29 @@ namespace Hangman
             int laenge = woerterListe.Count();
             Random rnd = new Random();
             string wort = woerterListe.ElementAt(rnd.Next(laenge));
-            char [] buchstabenArray = wort.ToCharArray();
+            char [] wortArray = wort.ToCharArray();
             BuchstabenListeFuellen();
             Console.WriteLine();
             Console.WriteLine(wort);
             Console.ReadLine();
             SelectList();
             }
+
+        public static void TryLetter(char[] wortArray){
+            int wortLength = wortArray.Length();
+
+            for(int i = 0; i < 12; i++){
+                if(wortLength=0){
+}                   Console.WriteLine("gewonnen");
+                    SelectList();
+                }
+                Console.WriteLine("Buchstaben eingeben");
+                ConsoleKeyInfo cki = Console.ReadKey();
+                if(wortArray.Contains(cki.Key)){
+
+}
+
+            }   
+        }
     }
 }

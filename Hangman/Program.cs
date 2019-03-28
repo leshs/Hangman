@@ -86,20 +86,21 @@ namespace Hangman
             }
 
         public static void TryLetter(char[] wortArray){
-            int wortLength = wortArray.Length();
+            int wortLength = wortArray.Length;
 
             for(int i = 0; i < 12; i++){
-                if(wortLength=0){
-}                   Console.WriteLine("gewonnen");
+                if(wortLength==0){
+                    Console.WriteLine("gewonnen");
                     SelectList();
                 }
                 Console.WriteLine("Buchstaben eingeben");
                 ConsoleKeyInfo cki = Console.ReadKey();
-                if(wortArray.Contains(cki.Key)){
+                char character = cki.KeyChar;
+                if(wortArray.Contains(character)){
+                }
 
-}
-
-            }   
+                }   
         }
+        
     }
 }

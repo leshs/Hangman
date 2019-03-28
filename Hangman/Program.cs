@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 
 namespace Hangman
 {
+
+    //Versuche müssen wieder zurückgesetzt werden.
     class Program
     {
         private List<String> woerterListe = new List<String>();
@@ -14,12 +16,29 @@ namespace Hangman
         private char[] wortArray;
         private char[] solutionArray;
         private int versuche;
+        private ASCII galgen;
 
         static void Main(string[] args)
         {
             Program Hangman = new Program();
-            Hangman.StartGame();
+
+            Hangman.InitializeGalgen();
            }
+
+        public void InitializeGalgen()
+        {
+            SetVersuche();
+            galgen = new ASCII(versuche);
+            galgen.DrawGalgen();
+            galgen.DrawGalgen();
+            galgen.DrawGalgen();
+            galgen.DrawGalgen();
+            galgen.DrawGalgen();
+            galgen.DrawGalgen();
+            galgen.DrawGalgen();
+            galgen.PrintGalgen();
+            StartGame();
+        }
 
         public void StartGame()
         {
@@ -28,12 +47,14 @@ namespace Hangman
             ReadFile(file);
             SelectWord();
         }
-        //Versuche festlegen
+
+        //Versuche festlegen (zum zurücksetzen)
         public void SetVersuche()
         {
             versuche = 12;
         }
-        //erst auswählen, welche Liste
+
+        //Spielauswahl / Auswahl der Liste
         public string SelectList()
         {
             Console.WriteLine("Bitte Spielliste wählen:");
@@ -64,7 +85,7 @@ namespace Hangman
             }
         }
 
-        //hier die Liste lesen
+        //Liste lesen
         public void ReadFile(string file)
         {
             string line;
@@ -74,7 +95,6 @@ namespace Hangman
                 woerterListe.Add(line);
             }
             SelectWord();
-
         }
 
         //Wort zufällig auswählen
@@ -93,6 +113,7 @@ namespace Hangman
             TryLetter(wortArray);
         }
 
+        //Ausdrucken der erratenen Buchstaben
         public void PrintSolution(char[] solutionArray)
         {
             foreach (char buchstabe in solutionArray)
@@ -101,6 +122,7 @@ namespace Hangman
             }
         }
 
+        //Hier ist das eigentliche Spiel
         public void TryLetter(char[] wortArray)
         {
             int wortLength = wortArray.Length;
@@ -111,6 +133,7 @@ namespace Hangman
                 solutionArray[i] = '_';
             }
 
+            //Schleife für das Spiel
             while (versuche > 0)
             {
                 if (!solutionArray.Contains('_'))
@@ -163,11 +186,10 @@ namespace Hangman
             }
             Console.WriteLine("verloren!");
             Console.WriteLine("Lösung: ");
-
             GameOver();
-
         }
 
+        //Spiel zu Ende: Zurücksetzen der Variablen
         public void GameOver()
         {
             foreach (char buchstabe in wortArray)

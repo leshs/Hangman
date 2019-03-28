@@ -34,19 +34,19 @@ namespace Hangman
             versuche--;
             switch (versuche)
             {
-                case 11:
+                case 10:
                     for (int i = 1; i < 6; i++)
                     {
                         galgen[6, i] = '|';
                     }
                     break;
-                case 10:
+                case 9:
                     galgen[5, 5] = '/';
                     break;
-                case 9:
+                case 8:
                     galgen[7,5] = '\\';
                     break;
-                case 8:
+                case 7:
                     galgen[2, 0] = '+';
                     for(int i = 3; i < 7; i++)
                     {
@@ -54,28 +54,29 @@ namespace Hangman
                     }
                     galgen[6, 0] = '+';
                     break;
-                case 7:
+                case 6:
                     galgen[2, 1] = '|';
                     break;
-                case 6:
+                case 5:
                     galgen[2, 2] = 'O';
                     break;
-                case 5:
+                case 4:
                     galgen[2, 3] = '|';
                     break;
-                case 4:
+                case 3:
                     galgen[1, 3] = '/';
                     break;
-                case 3:
+                case 2:
                     galgen[3, 3] = '\\';
                     break;
-                case 2:
+                case 1:
                     galgen[1, 4] = '/';
                     break;
-                case 1:
+                case 0:
                     galgen[3,4] = '\\';
                     break;
             }
+            PrintGalgen();
         }
 
         public void PrintGalgen()

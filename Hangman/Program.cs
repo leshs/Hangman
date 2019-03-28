@@ -29,14 +29,6 @@ namespace Hangman
         {
             SetVersuche();
             galgen = new ASCII(versuche);
-            galgen.DrawGalgen();
-            galgen.DrawGalgen();
-            galgen.DrawGalgen();
-            galgen.DrawGalgen();
-            galgen.DrawGalgen();
-            galgen.DrawGalgen();
-            galgen.DrawGalgen();
-            galgen.PrintGalgen();
             StartGame();
         }
 
@@ -172,7 +164,9 @@ namespace Hangman
                         }
                     }
                     else
-                    {
+                    {   
+                        
+                        galgen.DrawGalgen();
                         versuche--;
                     }
                 }

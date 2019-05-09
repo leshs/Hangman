@@ -12,6 +12,8 @@ namespace Hangman
         char[,] galgen = new char[9, 7];
         int versuche; 
         public ASCII()
+
+            //Boden des ASCII-Bildes
         {
             for(int i = 0; i < 6; i++)
             {
@@ -23,10 +25,10 @@ namespace Hangman
             for(int i = 0; i < 9; i++)
             {
                 galgen[i, 6] = '=';
-            }
-            
+            }            
         }
 
+        //Aufbau des Galgenmännchens
         public void DrawGalgen()
         {
             versuche--;
@@ -89,6 +91,7 @@ namespace Hangman
             }
         }
 
+        //Methode zum Zurücksetzen der Versuche
         public void SetVersuche(int nummer) 
         {
             versuche = nummer;

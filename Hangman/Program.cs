@@ -108,7 +108,7 @@ namespace Hangman
             }
         }
 
-        //Hier ist das eigentliche Spiel
+        //Hier ist das eigentliche Spiel sdf
         public void TryLetter(char[] wortArray)
         {
             int wortLength = wortArray.Length;
